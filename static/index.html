@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Vue</title>
+    <script type="module" crossorigin src="./assets/index-ffb203a7.js"></script>
+    <link rel="stylesheet" href="./assets/index-fc5f319f.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    
+  </body>
+</html>
+<script>
+  const urls = []
+  const els = document.querySelectorAll('script')
+  for (let i = 0; i < els.length; i++) {
+    const el = els[i]
+    if (el.type === 'module') {
+      urls.push(el.src)
+      el.remove()
+    }
+  }
+  console.log(urls)
+  urls.map(url=>{
+    window.fetch(url).then(res=>{
+      res.text().then(js=>{
+        const elScript = document.createElement('script')
+        elScript.type = 'module'
+        elScript.innerHTML = js
+        document.body.appendChild(elScript)
+      })
+    })
+  })
+</script>

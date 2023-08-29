@@ -1,0 +1,6 @@
+dist/*
+web-page/node_modules/*
+web-page/.vscode/*
+build/*
+*.
+__pycache__/*
